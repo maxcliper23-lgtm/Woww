@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Princess, My Wifey, My Love 💕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #fff1f5, #ffe0ec);
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5rem;
+      color: #d63384;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 30px 0;
+    }
+    .countdown div {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-size: 1.5rem;
+    }
+    .letter {
+      display: none;
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+    .gift-wrapper {
+      display: none;
+      margin-top: 40px;
+    }
+    .gift-box {
+      width: 120px;
+      height: 120px;
+      margin: auto;
+      background: #ff69b4;
+      position: relative;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .gift-box::before, .gift-box::after {
+      content: '';
+      position: absolute;
+      background: white;
+    }
+    .gift-box::before {
+      width: 100%;
+      height: 20px;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+    .gift-box::after {
+      height: 100%;
+      width: 20px;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+    }
+    .gift-lid {
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      background: #d81b60;
+      top: -30px;
+      left: 0;
+      border-radius: 8px 8px 0 0;
+      transition: 0.4s ease;
+    }
+    .gift-message {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #c2185b;
+    }
+    .opened .gift-lid {
+      transform: translateY(-80px) rotate(-15deg);
+    }
+    .opened .gift-message {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Princess, My Wifey, My Love 💕</h1>
+  <div class="countdown" id="countdown">
+    <div><span id="days">--</span><br>Days</div>
+    <div><span id="hours">--</span><br>Hours</div>
+    <div><span id="minutes">--</span><br>Minutes</div>
+    <div><span id="seconds">--</span><br>Seconds</div>
+  </div>
+
+  <div class="letter" id="letter">
+    <p>Kya kahun yaar... mere paas shabd hi nahi hain jo bata sake how deeply I feel for you.</p>
+    <p>Is birthday pe, bas ek wish nahi — poori duniya dene ka mann karta hai tujhe.</p>
+    <p>Tu meri sabse khoobsurat gift hai — not just from the universe, but from life itself.</p>
+    <p>Tera hona meri zindagi ka turning point tha. Teri hansi meri sukoon hai. Tera gussa bhi cute lagta hai yaar, kyunki usmein bhi sirf pyaar chhupa hota hai.</p>
+    <p>Happy Birthday, Guddu. Tere jaisa koi nahi — na kabhi tha, na hoga. Tu meri ho — aur main hamesha tera rahunga.</p>
+    <p>Love forever, <br><b>Sanuu 💖</b></p>
+  </div>
+
+  <div class="gift-wrapper" id="giftWrap">
+    <div class="gift-box" onclick="unwrapGift(this)">
+      <div class="gift-lid"></div>
+    </div>
+    <div class="gift-message">🎁 This is for you, my love — Happy Birthday Guddu ❤️</div>
+  </div>
+
+  <script>
+    const targetDate = new Date("2025-07-24T22:58:00").getTime();
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (distance > 0) {
+        daysEl.textContent = days;
+        hoursEl.textContent = hours;
+        minutesEl.textContent = minutes;
+        secondsEl.textContent = seconds;
+      } else {
+        clearInterval(interval);
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("letter").style.display = "block";
+        document.getElementById("giftWrap").style.display = "block";
+      }
+    }, 1000);
+
+    function unwrapGift(box) {
+      box.classList.add("opened");
+    }
+  </script>
+</body>
+</html>
